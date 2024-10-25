@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.05" package="com.evacorpcacn.eCalculator" android:installLocation="auto" android:versionCode="5">
+	<uses-sdk android:minSdkVersion="17" android:targetSdkVersion="27" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<application android:label="eCalculator" android:icon="@drawable/iconoEvaIV"></application>
+	<supports-screens android:resizeable="true" android:smallScreens="false" android:anyDensity="true" />
+</manifest>

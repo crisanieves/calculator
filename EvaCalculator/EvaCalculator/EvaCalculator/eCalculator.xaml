@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:EvaCalculator"
+             x:Class="EvaCalculator.MainPage"
+             BackgroundColor="Black">
+
+    <Grid Margin="5">
+
+        <Grid x:Name="portrait">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="1.05*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="1.05*" />
+                <ColumnDefinition Width="1.05*" />
+            </Grid.ColumnDefinitions>
+
+
+            <!-- Place new controls here -->
+            <!-- ******************************Logo y botones de guardado ******************************************* -->
+            <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6"  Padding="0" BackgroundColor="Black">
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1.5*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="1.25*" />
+                        <ColumnDefinition Width="1.25*" />
+                        <ColumnDefinition Width="1.25*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image x:Name="EvaButton" 
+                                Source="eCalculator.png" BackgroundColor="Black"
+                                    HorizontalOptions="Start" Margin="12,0"
+                                        Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                                                HeightRequest="50"/>
+
+                    <!-- ..................................Guardado y recuperación: .......................................... -->
+
+                    <Button x:Name="Xv"
+                                Text="x" BackgroundColor="Black" TextColor="Orange" FontSize="10" HeightRequest="37" 
+                                Grid.Row="0" Grid.Column="2"/>
+
+                    <Button x:Name="Yv"
+                                Text="y" IsEnabled="False" BackgroundColor="Black" TextColor="Orange" FontSize="10" HeightRequest="37" 
+                                HorizontalOptions="End" VerticalOptions="Center"/>
+
+                    <Button x:Name="GetData"
+                                Text="Get" BackgroundColor="Black" TextColor="Orange" FontSize="10" HeightRequest="37" 
+                                Grid.Row="0" Grid.Column="3"/>
+
+                    <Button x:Name="SaveData"
+                                    Text="Set" BackgroundColor="Black" TextColor="White" FontSize="10" HeightRequest="37" 
+                                    Grid.Row="0" Grid.Column="4"/>
+
+                    <Button x:Name="RadDegree"
+                                Text="Rad" BackgroundColor="Black" TextColor="NavajoWhite" FontSize="10" HeightRequest="37" 
+                                Grid.Row="0" Grid.Column="5"/>
+                </Grid>
+            </Frame>
+
+            <!-- ******************************Pantallas: *********************************************************** -->
+
+            <Editor x:Name="MathEnter"  Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="6"  
+                       Text=" " TextColor="White" FontSize="30" Keyboard="Text" HorizontalOptions="Fill"
+                                    VerticalOptions="FillAndExpand" HeightRequest="100"/>
+
+            <ScrollView Orientation="Horizontal" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6" >
+                <Label x:Name="MathResult" Text=" " TextColor="White" FontSize="30" Margin="12,0"
+                                VerticalTextAlignment="Start" VerticalOptions="Fill" 
+                                    HorizontalOptions="Fill" HorizontalTextAlignment="End"/>
+            </ScrollView>
+
+            <!-- ******************************Línea de Simbolos 3:************************************************** -->
+            <Button x:Name="MoreButtons"
+                        Text="•••" BackgroundColor="Black" TextColor="White" FontSize="19"
+                        Grid.Row="4" Grid.Column="0"/>
+            <Button x:Name="Logaritmo"
+                        Text="log" BackgroundColor="Black" TextColor="White" 
+                        Grid.Row="4" Grid.Column="1"/>
+            <Button x:Name="logaritmoNatural"
+                        Text="ln" BackgroundColor="Black" TextColor="White" 
+                        Grid.Row="4" Grid.Column="2"/>
+            <Button x:Name="seno"
+                        Text="sin" BackgroundColor="Black" TextColor="White" 
+                        Grid.Row="4" Grid.Column="3"/>
+            <Button x:Name="coseno"
+                        Text="cos" BackgroundColor="Black" TextColor="White" 
+                        Grid.Row="4" Grid.Column="4"/>
+            <Button x:Name="tangente"
+                        Text="tan" BackgroundColor="Black" TextColor="White" 
+                        Grid.Row="4" Grid.Column="5"/>
+            <!-- ******************************Línea de Simbolos 2:************************************************** -->
+            <Button x:Name="Retornar"
+                        Text="m" BackgroundColor="Black" TextColor="YellowGreen"
+                        Grid.Row="5" Grid.Column="0"/>
+            <Button x:Name="nPotencia"
+                        Text="χⁿ" BackgroundColor="Black" TextColor="White" FontSize="17" 
+                        Grid.Row="5" Grid.Column="1"/>
+            <Button x:Name="Factorial"
+                        Text="χ!" BackgroundColor="Black" TextColor="White" FontSize="17" 
+                        Grid.Row="5" Grid.Column="2"/>
+            <Button x:Name="RaizGeneral"
+                        Text="ª√" BackgroundColor="Black" TextColor="White" FontSize="17"
+                        Grid.Row="5" Grid.Column="3"/>
+            <Button x:Name="euler"
+                        Image="euler.png" BackgroundColor="Black" 
+                        Grid.Row="5" Grid.Column="4"/>
+            <Button x:Name="pi"
+                        Image="Pi.png" BackgroundColor="Black" 
+                        Grid.Row="5" Grid.Column="5"/>
+            <!-- ******************************Línea de Símbolos 1: ************************************************* -->
+            <Button x:Name="PuntoYComa"
+                        Text=";" BackgroundColor="Black" TextColor="White" FontSize="17"
+                        Grid.Row="6" Grid.Column="0" />
+            <Button x:Name="PotenciaCuadrada"
+                        Text="χ²" BackgroundColor="Black" TextColor="White" FontSize="17"
+                        Grid.Row="6" Grid.Column="1"  />
+            <Button x:Name="Porcentaje"
+                        Text="%" BackgroundColor="Black" TextColor="White" FontSize="17"
+                        Grid.Row="6" Grid.Column="2" />
+            <Button x:Name="RaizCuadrada"
+                        Text="√" BackgroundColor="Black" TextColor="White" FontSize="17"
+                        Grid.Row="6" Grid.Column="3" />
+            <Button x:Name="ParentesisApertura"
+                        Text="(" BackgroundColor="Black" TextColor="White" FontSize="17"
+                        Grid.Row="6" Grid.Column="4" />
+            <Button x:Name="ParentesisCierre"
+                        Text=")" BackgroundColor="Black" TextColor="White" FontSize="17"
+                        Grid.Row="6" Grid.Column="5" />
+
+            <!-- ******************************Botones de Números y Operadores básicos: ***************************** -->
+            <Frame Grid.Row="7" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="6"  Padding="0" BackgroundColor="Black">
+                <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="1.05*" />
+                        <ColumnDefinition Width="1.05*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="Siete"
+                            Text="7" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="0" Grid.Column="0"  />
+                    <Button x:Name="Ocho"
+                            Text="8" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="0" Grid.Column="1" />
+                    <Button x:Name="Nueve"
+                            Text="9" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="0" Grid.Column="2" />
+                    <Button x:Name="DEL"
+                            Text="DEL" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="0" Grid.Column="3" />
+                    <Button x:Name="AC"
+                            Text="AC" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="0" Grid.Column="4" />
+
+
+                    <Button x:Name="Cuatro"
+                            Text="4" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="1" Grid.Column="0" />
+                    <Button x:Name="Cinco"
+                            Text="5" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="1" Grid.Column="1" />
+                    <Button x:Name="Seis" 
+                            Text="6" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="1" Grid.Column="2" />
+                    <Button x:Name="Producto"
+                            Text="×" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="1" Grid.Column="3" />
+                    <Button x:Name="Division"
+                            Text="÷" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="1" Grid.Column="4" />
+
+
+                    <Button x:Name="Uno"
+                            Text="1" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="2" Grid.Column="0" />
+                    <Button x:Name="Dos"
+                            Text="2" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="2" Grid.Column="1" />
+                    <Button x:Name="Tres"
+                            Text="3" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="2" Grid.Column="2" />
+                    <Button x:Name="Adicion"
+                            Text="+" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="2" Grid.Column="3" />
+                    <Button x:Name="Substraccion"
+                            Text="-" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="2" Grid.Column="4" />
+
+
+                    <Button x:Name="Cero"
+                            Text="0" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="3" Grid.Column="0" />
+                    <Button x:Name="comaFlotante"
+                            Text="," BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="3" Grid.Column="1" />
+                    <Button x:Name="EXP"
+                            Text="EXP" BackgroundColor="Black" TextColor="White" FontSize="19"
+                            Grid.Row="3" Grid.Column="2" />
+                    <Button x:Name="Igual"
+                            Text="EXE" BackgroundColor="Aquamarine" TextColor="White" FontSize="19"
+                            Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"/>
+                </Grid>
+            </Frame>
+        </Grid>
+
+        <!-- ———————————————————————————————————————————————————————————————————————————————————————————————————— -->
+    </Grid>
+
+</ContentPage>
