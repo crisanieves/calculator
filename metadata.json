@@ -1,0 +1,6 @@
+{
+  "name": "Eva Calculator",
+  "description": "A scientific and symbolic calculator with variable memory, trigonometry (RAD/DEG), roots, powers, and calculation history.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
