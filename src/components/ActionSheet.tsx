@@ -5,8 +5,8 @@ export interface ActionSheetProps {
   title?: string | null;
   message?: string | null;
   cancelButton?: string | null;
-  destructiveButton?: string | null;
   buttons: string[];
+  alignLeft?: boolean;
   onSelect: (selected: string | null) => void;
 }
 
@@ -16,6 +16,7 @@ export const ActionSheet: React.FC<ActionSheetProps> = ({
   message,
   cancelButton,
   buttons,
+  alignLeft,
   onSelect,
 }) => {
   if (!isOpen) return null;
@@ -23,19 +24,29 @@ export const ActionSheet: React.FC<ActionSheetProps> = ({
   return (
     <div
       id="action-sheet-backdrop"
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/75 p-3 backdrop-blur-xs transition-opacity"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 p-3 backdrop-blur-xs transition-opacity"
       onClick={() => onSelect(null)}
     >
       <div
         id="action-sheet-container"
-        className="w-full max-w-sm overflow-hidden rounded-2xl bg-[#1c1c1e] text-white border border-[#333333] shadow-2xl animate-in fade-in zoom-in-95 duration-150"
+        className="w-full max-w-xs xs:max-w-sm sm:max-w-md overflow-hidden rounded-2xl bg-[#1c1c1e] text-white border border-[#333333] shadow-2xl animate-in fade-in zoom-in-95 duration-150"
         onClick={(e) => e.stopPropagation()}
       >
         {(title || message) && (
-          <div id="action-sheet-header" className="px-5 py-4 border-b border-[#2c2c2e] text-center">
-            {title && <h3 id="action-sheet-title" className="text-base font-semibold text-gray-100">{title}</h3>}
+          <div
+            id="action-sheet-header"
+            className={`px-4 xs:px-5 py-3.5 xs:py-4 border-b border-[#2c2c2e] ${alignLeft ? 'text-left' : 'text-center'}`}
+          >
+            {title && (
+              <h3 id="action-sheet-title" className="text-sm xs:text-base sm:text-lg font-semibold text-gray-100">
+                {title}
+              </h3>
+            )}
             {message && (
-              <p id="action-sheet-message" className="mt-1 text-xs text-gray-400 whitespace-pre-line leading-relaxed max-h-60 overflow-y-auto">
+              <p
+                id="action-sheet-message"
+                className={`mt-1 text-xs xs:text-sm text-gray-400 whitespace-pre-line leading-relaxed max-h-60 overflow-y-auto ${alignLeft ? 'text-left' : ''}`}
+              >
                 {message}
               </p>
             )}
@@ -47,7 +58,7 @@ export const ActionSheet: React.FC<ActionSheetProps> = ({
             <button
               key={index}
               id={`action-sheet-btn-${index}`}
-              className="w-full py-3.5 px-4 text-center text-sm font-medium text-blue-400 hover:bg-[#2c2c2e] active:bg-[#3a3a3c] transition-colors"
+              className="w-full py-3 xs:py-3.5 px-4 text-center text-xs xs:text-sm sm:text-base font-medium text-blue-400 hover:bg-[#2c2c2e] active:bg-[#3a3a3c] transition-colors whitespace-nowrap truncate"
               onClick={() => onSelect(btn)}
             >
               {btn}
@@ -59,7 +70,7 @@ export const ActionSheet: React.FC<ActionSheetProps> = ({
           <div id="action-sheet-footer" className="border-t border-[#2c2c2e] p-2 bg-[#161618]">
             <button
               id="action-sheet-cancel-btn"
-              className="w-full py-2.5 rounded-xl font-semibold text-sm text-red-400 hover:bg-[#2c2c2e] active:bg-[#3a3a3c] transition-colors"
+              className="w-full py-2.5 sm:py-3 rounded-xl font-semibold text-xs xs:text-sm sm:text-base text-red-400 hover:bg-[#2c2c2e] active:bg-[#3a3a3c] transition-colors whitespace-nowrap"
               onClick={() => onSelect(null)}
             >
               {cancelButton}

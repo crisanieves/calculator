@@ -18,16 +18,22 @@ export function loadSettings(): CalculatorSettings {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return { ...defaultSettings };
     const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object') return { ...defaultSettings };
+
     return {
-      x: typeof parsed.x === 'string' ? parsed.x : '',
-      y: typeof parsed.y === 'string' ? parsed.y : '',
-      z: typeof parsed.z === 'string' ? parsed.z : '',
-      w: typeof parsed.w === 'string' ? parsed.w : '',
+      x: typeof parsed.x === 'string' ? parsed.x.slice(0, 1000) : '',
+      y: typeof parsed.y === 'string' ? parsed.y.slice(0, 1000) : '',
+      z: typeof parsed.z === 'string' ? parsed.z.slice(0, 1000) : '',
+      w: typeof parsed.w === 'string' ? parsed.w.slice(0, 1000) : '',
       angleMode: parsed.angleMode === 'DEG' ? 'DEG' : 'RAD',
       language: parsed.language === 'Inglés' ? 'Inglés' : 'Español',
-      decimalPlaces: typeof parsed.decimalPlaces === 'number' && parsed.decimalPlaces >= 1 && parsed.decimalPlaces <= 15
-        ? parsed.decimalPlaces
-        : 10,
+      decimalPlaces:
+        typeof parsed.decimalPlaces === 'number' &&
+        Number.isInteger(parsed.decimalPlaces) &&
+        parsed.decimalPlaces >= 1 &&
+        parsed.decimalPlaces <= 15
+          ? parsed.decimalPlaces
+          : 10,
       mostrarInfo: typeof parsed.mostrarInfo === 'boolean' ? parsed.mostrarInfo : true,
     };
   } catch {
